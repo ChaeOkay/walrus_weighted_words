@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: walrus_weighted_words_development
+
+test:
+  <<: *default
+  database: walrus_weighted_words_test
