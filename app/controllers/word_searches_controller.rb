@@ -9,6 +9,8 @@ class WordSearchesController < ApplicationController
     if @word_search.valid?
       @word_search.save
       render :show
+    else
+      render :new
     end
   end
 

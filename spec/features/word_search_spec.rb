@@ -8,7 +8,13 @@ describe 'user word search' do
       visit new_word_search_path
       fill_in 'word_search_url', with: site
       click_button I18n.t('word_search.new.submit_button')
-      page.has_content?(I18n.t('word_search.show.site_searched', site: site))
+      expect(page).to have_content(I18n.t('word_search.show.site_searched', site: site))
+    end
+
+    it 'displays a rails presence validation message when missing' do
+      visit new_word_search_path
+      click_button I18n.t('word_search.new.submit_button')
+      expect(page).to have_content("can't be blank")
     end
   end
 end

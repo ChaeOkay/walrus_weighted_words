@@ -7,4 +7,6 @@ html lang='en'
       = javascript_include_tag 'application'
       = favicon_link_tag
 
+  body
+    = flash[:errors]
     = yield
