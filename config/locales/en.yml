@@ -22,5 +22,7 @@
 en:
   word_search:
     new:
-      url_placeholder: "example: www.healthfinch.com"
-      submit_button: "Search site to weigh words"
+      url_placeholder: example - www.healthfinch.com
+      submit_button: Search site to weigh words
+    show:
+      site_searched: Site searched - %{site}
