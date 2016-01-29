@@ -1,2 +1,4 @@
 = simple_form_for @word_search do |f|
-  fieldset= f.input :url, placeholder: "example: www.healthfinch.com"
+  fieldset= f.input :url,
+    placeholder: t('word_search.new.url_placeholder')
+  button= t('word_search.new.submit_button')
