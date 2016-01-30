@@ -14,7 +14,14 @@ describe 'user word search' do
     it 'displays a rails presence validation message when missing' do
       visit new_word_search_path
       click_button I18n.t('word_search.new.submit_button')
-      expect(page).to have_content("can't be blank")
+      expect(page).to have_content(I18n.t('errors.messages.blank'))
+    end
+
+    it 'dsiplays a validation error when invalid' do
+      visit new_word_search_path
+      fill_in 'word_search_url', with: 'www.hi.com'
+      click_button I18n.t('word_search.new.submit_button')
+      expect(page).to have_content(I18n.t('word_search.errors.url'))
     end
   end
 end
