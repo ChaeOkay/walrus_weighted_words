@@ -1,24 +1,26 @@
 require 'spec_helper'
 
 describe WordWeigher do
+  let(:words_collection) { [] }
   let(:words) { %w(at bat sat cat rat mat tap pat lap gnat stat) }
+  before { create_words_collection }
+  subject(:word_weigher) { described_class.new(words: words_collection) }
 
-  before do
-    10.times { words << "stat" }
-    9.times { words << "gnat" }
-    8.times { words << "lap" }
-    7.times { words << "pat" }
-    6.times { words << "tap" }
-    5.times { words << "mat" }
-    4.times { words << "rat" }
-    3.times { words << "cat" }
-    2.times { words << "sat" }
-    1.times { words << "bat" }
+  describe '#weighted_words' do
+    subject(:weighted_words) { word_weigher.weighted_words }
+
+    it 'returns hash of words ordered by frequncy of occurence' do
+      expect(weighted_words["at"]).to eq 1
+      expect(weighted_words["bat"]).to eq 2
+      expect(weighted_words["stat"]).to eq 11
+    end
   end
 
-  subject(:word_weigher) { described_class.new(words: words) }
+  private
 
-  describe '#top_ten' do
-    subject(:top_ten) { word_weigher.top_ten }
+  def create_words_collection
+    words.each_with_index do |word, index|
+      (index+1).times { words_collection << word }
+    end
   end
 end
