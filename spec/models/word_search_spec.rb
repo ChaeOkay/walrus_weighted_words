@@ -13,20 +13,37 @@ describe WordSearch do
     it { is_expected.not_to be_valid }
   end
 
-  describe '#top_ten_weighted_words' do
-    context 'with weighted words' do
-      let(:weighted_words) { %w(a b c d e f g h i j l m).shuffle }
-      let(:word_search) { described_class.new(url: 'https://chaeokeefe.com') }
+  context 'with weighted words' do
+    let(:word_search) { described_class.new(url: 'https://chaeokeefe.com') }
 
-      before do
-        allow_any_instance_of(UrlWords).to receive(:all) { ['words'] }
-        allow_any_instance_of(WordWeigher).to receive(:words)
-        allow_any_instance_of(WordWeigher).to receive(:weighted_words) { weighted_words }
+    before do
+      allow_any_instance_of(UrlWords).to receive(:all) { ['words'] }
+      allow_any_instance_of(WordWeigher).to receive(:words)
+      allow_any_instance_of(WordWeigher).to receive(:weighted_words) { weighted_words }
+    end
+
+    context 'with more than 10 weighted words' do
+      let(:weighted_words) { %w(a b c d e f g h i j l m) }
+      describe '#top_ten_weighted_words' do
+
+        subject { word_search.top_ten_weighted_words.size }
+        it { is_expected.to eq 10 }
+      end
+    end
+
+    context 'with more than 1 weighted word' do
+      let(:weighted_word1) { instance_double('WeightedWord', word: 'cat', frequency: 9) }
+      let(:weighted_word2) { instance_double('WeightedWord', word: 'bird', frequency: 2) }
+      let(:weighted_words) { [weighted_word1, weighted_word2] }
+
+      context '#top_weighted_word' do
+        subject { word_search.top_weighted_word }
+        it { is_expected.to eq weighted_word1.word }
       end
 
-      it 'returns the top 10 sorted words' do
-        expect(word_search.top_ten_weighted_words)
-          .to eq weighted_words.sort[0..9]
+      context '#top_weighted_frequency' do
+        subject { word_search.top_weighted_frequency }
+        it { is_expected.to eq weighted_word1.frequency }
       end
     end
   end
