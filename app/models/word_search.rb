@@ -7,6 +7,14 @@ class WordSearch < ActiveRecord::Base
     weighted_words[0..9]
   end
 
+  def top_weighted_word
+    heaviest_weighted_word.word
+  end
+
+  def top_weighted_frequency
+    heaviest_weighted_word.frequency
+  end
+
   private
 
   def words

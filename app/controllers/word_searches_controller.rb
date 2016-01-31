@@ -17,6 +17,10 @@ class WordSearchesController < ApplicationController
   def show
   end
 
+  def index
+    @word_searches = WordSearch.all
+  end
+
   private
 
   def word_search_params

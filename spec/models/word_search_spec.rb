@@ -31,7 +31,19 @@ describe WordSearch do
       end
     end
 
+    context 'with more than 1 weighted word' do
+      let(:weighted_word1) { instance_double('WeightedWord', word: 'cat', frequency: 9) }
+      let(:weighted_word2) { instance_double('WeightedWord', word: 'bird', frequency: 2) }
+      let(:weighted_words) { [weighted_word1, weighted_word2] }
 
+      context '#top_weighted_word' do
+        subject { word_search.top_weighted_word }
+        it { is_expected.to eq weighted_word1.word }
+      end
+
+      context '#top_weighted_frequency' do
+        subject { word_search.top_weighted_frequency }
+        it { is_expected.to eq weighted_word1.frequency }
       end
     end
   end
