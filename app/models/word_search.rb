@@ -3,10 +3,15 @@ class WordSearch < ActiveRecord::Base
     presence: true,
     url: true
 
-# words (hstore?) or the xml can be saved to WordSearch pg table,
-# not sure what the best caching situation is yet
+  def top_ten_weighted_words
+    weighted_words.sort[0..9]
+  end
+
+  private
 
   def words
+   # words (hstore?) or the xml can be saved to WordSearch pg table,
+   # not sure what the best caching situation is yet
     UrlWords.new(url: url).all
   end
 
