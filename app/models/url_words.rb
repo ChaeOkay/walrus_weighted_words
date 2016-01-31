@@ -16,11 +16,11 @@ class UrlWords
   private
 
   def site
-    @site ||= Site.new(url: url).content
+    @site ||= Site.new(url: url)
   end
 
   def site_text
-    site.inner_text.downcase.squish
+    site.content.inner_text.downcase.squish
   end
 
   def parsed_site_words

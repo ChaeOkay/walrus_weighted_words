@@ -44,14 +44,24 @@ describe 'new word search' do
       expect(table_rows_plus_header.size).to eq 11
     end
 
-    it 'displays the correct word and frequency count' do
+    it 'displays the correct weighted words and frequency count' do
       first_result_entry = find_all('table tr[2] td')
       expect(first_result_entry.first.text).to eq 'arena'
       expect(first_result_entry.last.text).to eq '31'
 
-      last_result_entry = find_all('table tr:last td')
-      expect(last_result_entry.first.text).to eq 'of'
+      first_result_entry = find_all('table tr[3] td')
+      expect(first_result_entry.first.text).to eq 'the'
+      expect(first_result_entry.last.text).to eq '26'
+
+      last_result_entry = find_all('table tr[10] td')
+      expect(last_result_entry.first.text).to eq 'hockey'
       expect(last_result_entry.last.text).to eq '10'
+
+      last_result_entry = find_all('table tr:last td')
+      #expect(last_result_entry.first.text).to eq 'of'
+      #expect(last_result_entry.last.text).to eq '10'
+      expect(last_result_entry.first.text).to eq 'is'
+      expect(last_result_entry.last.text).to eq '8'
     end
   end
 end

@@ -7,6 +7,18 @@ class Site
   end
 
   def content
-    Nokogiri::HTML(open url)
+    sanitize
+    html
+  end
+
+  private
+
+  def sanitize
+    html.xpath('//style').remove
+    html.xpath('//script').remove
+  end
+
+  def html
+    @html ||= Nokogiri::HTML(open url)
   end
 end
