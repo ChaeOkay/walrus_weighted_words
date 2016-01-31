@@ -24,7 +24,7 @@ en:
     errors:
       url: is not a valid url, please use http or https
     new:
-      url_placeholder: example - www.healthfinch.com
+      url_placeholder: example - http://www.healthfinch.com
       submit_button: Search site to weigh words
     show:
       site_searched: Site searched - %{site}
