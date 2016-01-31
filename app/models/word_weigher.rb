@@ -10,7 +10,7 @@ class WordWeigher
   def weighted_words
     words_map.map do |word, word_list|
       weighted_word_factory.new(word: word, frequency: word_list.size)
-    end
+    end.sort
   end
 
   private

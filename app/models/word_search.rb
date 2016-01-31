@@ -4,7 +4,7 @@ class WordSearch < ActiveRecord::Base
     url: true
 
   def top_ten_weighted_words
-    weighted_words.sort[0..9]
+    weighted_words[0..9]
   end
 
   private
@@ -15,7 +15,11 @@ class WordSearch < ActiveRecord::Base
     UrlWords.new(url: url).all
   end
 
+  def heaviest_weighted_word
+    weighted_words.first
+  end
+
   def weighted_words
-    WordWeigher.new(words: words).weighted_words
+    @weighted_words ||= WordWeigher.new(words: words).weighted_words
   end
 end
