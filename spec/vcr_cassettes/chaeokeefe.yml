@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://chaeokeefe.com/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 31 Jan 2016 22:04:54 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Last-Modified:
+      - Fri, 08 Jan 2016 01:21:48 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Expires:
+      - Sun, 31 Jan 2016 22:14:54 GMT
+      Cache-Control:
+      - max-age=600
+      X-Github-Request-Id:
+      - 62C000DB:3B69:A7D4A8B:56AE8506
+    body:
+      encoding: ASCII-8BIT
+      string: "\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n
+        \   <title></title>\n    \n    <meta name=\"author\" content=\"Chae O'Keefe\">\n\n
+        \   <!-- Enable responsive viewport -->\n    <meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1.0\">\n\n    <!-- Le HTML5 shim, for IE6-8 support of HTML
+        elements -->\n    <!--[if lt IE 9]>\n      <script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n
+        \   <![endif]-->\n\n    <!-- Le styles -->\n    <link href='http://fonts.googleapis.com/css?family=Raleway:400,200'
+        rel='stylesheet' type='text/css'>\n    <link href=\"assets/css/bootstrap.2.2.2.min.css\"
+        rel=\"stylesheet\">\n    <link href=\"assets/css/style.css\" rel=\"stylesheet\"
+        type=\"text/css\" media=\"all\">\n    <link href=\"assets/font-awesome/css/font-awesome.min.css\"
+        rel=\"stylesheet\" type=\"text/css\" media=\"all\">\n\n    <!-- Le fav and
+        touch icons -->\n\n    <!-- atom & rss feed -->\n    <link href=\"/atom.xml\"
+        type=\"application/atom+xml\" rel=\"alternate\" title=\"Sitewide ATOM Feed\">\n
+        \   <link href=\"/rss.xml\" type=\"application/rss+xml\" rel=\"alternate\"
+        title=\"Sitewide RSS Feed\">\n\n  </head>\n\n  <body>\n    <div class=\"navbar\">\n
+        \     <div class=\"navbar-inner\">\n        <div class=\"container-narrow\">\n
+        \         <div id=\"navNameArea\">\n            <a class=\"brand\" id=\"navName\"
+        href=\"/\">Chae O'Keefe</br></a>\n            <a id=\"navEmail\" href=\"mailto:chaeokeefe@gmail.com\"><small>chaeokeefe@gmail.com</small></a>\n
+        \         </div>\n\n          <ul class=\"nav\">\n            \n            \n
+        \           \n\n\n  \n    \n      \n      \t\n      \t<li><a href=\"/about.html\">About</a></li>\n
+        \     \t\n      \n    \n  \n    \n      \n    \n  \n    \n  \n    \n      \n
+        \   \n  \n    \n      \n    \n  \n\n\n\n          </ul>\n        </div>\n
+        \     </div>\n    </div>\n\n    <div class=\"container-narrow\">\n\n      <div
+        class=\"content\">\n        <div class=\"row-fluid\">\n  <div class=\"row-fluid
+        span12 main-body\">\n    <div class=\"span12\" id=\"indexText\">\n        software
+        developer\n    </div>\n    <div class=\"span12\" id=\"linkList\">\n      <ul
+        class=\"inline\">\n        <li><a href=https://github.com/ChaeOkay?tab=repositories><i
+        class=\"fa fa-github-square fa-3x\"></i></a></li><li><a href=http://www.linkedin.com/in/chaeokeefe><i
+        class=\"fa fa-linkedin-square fa-3x\"></i></a></li><li><a href=https://twitter.com/ChaeOKeefe><i
+        class=\"fa fa-twitter-square fa-3x\"></i></a></li><li><a href=http://arch2dev.tumblr.com/><i
+        class=\"fa fa-tumblr-square fa-3x\"></i></a></li>\n      </ul>\n    </div>\n
+        \ </div>\n\n</div>\n\n      </div>\n      <hr>\n      <footer>\n        <p>&copy;
+        2016 Chae O'Keefe\n          with help from <a href=\"http://jekyllbootstrap.com\"
+        target=\"_blank\" title=\"The Definitive Jekyll Blogging Framework\">Jekyll
+        Bootstrap</a>,\n          <a href=\"http://twitter.github.com/bootstrap/\"
+        target=\"_blank\">Twitter Bootstrap</a>,\n          and\n          <a href=\"http://pages.github.com/\"
+        target=\"_blank\">Github Pages</a>\n        </p>\n      </footer>\n\n    </div>\n
+        \ </body>\n</html>\n\n"
+    http_version: 
+  recorded_at: Sun, 31 Jan 2016 22:04:54 GMT
+recorded_with: VCR 3.0.1

@@ -2,12 +2,8 @@ require 'rails_helper'
 
 describe 'new word search' do
   let(:url) { 'https://en.wikipedia.org/wiki/VTB_Ice_Palace' }
-  let(:site) { instance_double('Site') }
-  let(:site_content) { Nokogiri::HTML.open("#{Rails.root}/spec/fixtures/vtb_source.html") }
-
-  before do
-    allow(site).to receive(:content) { site_content }
-  end
+  before { VCR.insert_cassette 'vtb_ice_palace' }
+  after { VCR.eject_cassette 'vtb_ice_palace' }
 
   describe 'requires a url' do
     it 'displays the given url when provided and persisted' do

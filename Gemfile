@@ -43,6 +43,8 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'turnip'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do
