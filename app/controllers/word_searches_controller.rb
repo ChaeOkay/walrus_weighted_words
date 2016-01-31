@@ -5,7 +5,7 @@ class WordSearchesController < ApplicationController
   end
 
   def create
-    @word_search = WordSearch.new(word_search_params)
+    @word_search = WordSearch.where(word_search_params).first_or_initialize
     if @word_search.valid?
       @word_search.save
       render :show

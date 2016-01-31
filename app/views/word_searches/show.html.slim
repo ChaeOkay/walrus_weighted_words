@@ -1,1 +1,12 @@
 p= t('word_search.show.site_searched', site: @word_search.url)
+
+p
+  table
+    tr
+      th word
+      th frequency
+
+    - @word_search.top_ten_weighted_words.each do |weighted_word|
+      tr
+        td= weighted_word.word
+        td= weighted_word.frequency
