@@ -26,7 +26,7 @@ describe 'new word search' do
   end
 
   describe 'results' do
-    # probably wants to be moved to show page once created without before block
+    # probably wants to be moved to a pec with pre-seeded data
     before do
       visit new_word_search_path
       fill_in 'word_search_url', with: site
