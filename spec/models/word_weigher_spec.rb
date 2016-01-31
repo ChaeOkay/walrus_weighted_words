@@ -2,17 +2,15 @@ require 'spec_helper'
 
 describe WordWeigher do
   let(:words_collection) { [] }
-  let(:words) { %w(at bat sat cat rat mat tap pat lap gnat stat) }
+  let(:words) { %w(at bat sat cat) }
   before { create_words_collection }
   subject(:word_weigher) { described_class.new(words: words_collection) }
 
   describe '#weighted_words' do
     subject(:weighted_words) { word_weigher.weighted_words }
 
-    it 'returns hash of words ordered by frequncy of occurence' do
-      expect(weighted_words["at"]).to eq 1
-      expect(weighted_words["bat"]).to eq 2
-      expect(weighted_words["stat"]).to eq 11
+    it 'creates a weighted word for each unique word' do
+      expect(weighted_words.size).to eq words.uniq.size
     end
   end
 
