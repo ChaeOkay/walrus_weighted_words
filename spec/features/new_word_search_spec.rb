@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'new word search' do
   let(:url) { 'https://en.wikipedia.org/wiki/VTB_Ice_Palace' }
   let(:site) { instance_double('Site') }
