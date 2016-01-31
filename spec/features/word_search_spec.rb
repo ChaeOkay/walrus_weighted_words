@@ -2,13 +2,20 @@ require 'rails_helper'
 
 
 describe 'new word search' do
-  let(:site) { 'http://chaeokeefe.com' }
+  let(:url) { 'https://en.wikipedia.org/wiki/VTB_Ice_Palace' }
+  let(:site) { instance_double('Site') }
+  let(:site_content) { Nokogiri::HTML.open("#{Rails.root}/spec/fixtures/vtb_source.html") }
+
+  before do
+    allow(site).to receive(:content) { site_content }
+  end
+
   describe 'requires a url' do
     it 'displays the given url when provided and persisted' do
       visit new_word_search_path
-      fill_in 'word_search_url', with: site
+      fill_in 'word_search_url', with: url
       click_button I18n.t('word_search.new.submit_button')
-      expect(page).to have_content(I18n.t('word_search.show.site_searched', site: site))
+      expect(page).to have_content(I18n.t('word_search.show.site_searched', site: url))
     end
 
     it 'displays a rails presence validation message when missing' do
@@ -26,10 +33,9 @@ describe 'new word search' do
   end
 
   describe 'results' do
-    # probably wants to be moved to a pec with pre-seeded data
     before do
       visit new_word_search_path
-      fill_in 'word_search_url', with: site
+      fill_in 'word_search_url', with: url
       click_button I18n.t('word_search.new.submit_button')
     end
 
@@ -38,9 +44,14 @@ describe 'new word search' do
       expect(table_rows_plus_header.size).to eq 11
     end
 
-    it 'includes 2 attributes of a result entry, word and frequency' do
-      result_entry = find_all('table tr:last td')
-      expect(result_entry.size).to eq 2
+    it 'displays the correct word and frequency count' do
+      first_result_entry = find_all('table tr[2] td')
+      expect(first_result_entry.first.text).to eq 'arena'
+      expect(first_result_entry.last.text).to eq '31'
+
+      last_result_entry = find_all('table tr:last td')
+      expect(last_result_entry.first.text).to eq 'of'
+      expect(last_result_entry.last.text).to eq '10'
     end
   end
 end
