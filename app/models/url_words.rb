@@ -16,7 +16,7 @@ class UrlWords
   private
 
   def site
-    @site ||= Nokogiri::HTML(open url)
+    @site ||= Site.new(url: url).content
   end
 
   def site_text
