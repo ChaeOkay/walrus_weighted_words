@@ -20,7 +20,7 @@ class UrlWords
   end
 
   def site_text
-    site.inner_text.squish
+    site.inner_text.downcase.squish
   end
 
   def parsed_site_words
