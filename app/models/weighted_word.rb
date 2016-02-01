@@ -1,11 +1,10 @@
-class WeightedWord
+class WeightedWord < ActiveRecord::Base
   include Comparable
-  attr_reader :word, :frequency
 
-  def initialize(word:, frequency:)
-    @word = word
-    @frequency = frequency
-  end
+  belongs_to :word_search, inverse_of: :weighted_words
+
+  validates :word, presence: true
+  validates :frequency, presence: true
 
   def <=>(other_word)
     other_word.frequency <=> frequency

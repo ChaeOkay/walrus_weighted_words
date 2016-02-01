@@ -1,4 +1,6 @@
 class WordSearch < ActiveRecord::Base
+  has_many :weighted_words, inverse_of: :word_search
+
   validates :url,
     presence: true,
     url: true
