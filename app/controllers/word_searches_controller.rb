@@ -6,8 +6,9 @@ class WordSearchesController < ApplicationController
 
   def create
     @word_search = WordSearch.where(word_search_params).first_or_initialize
-    if @word_search.valid?
-      @word_search.save
+    if @word_search.persisted?
+      render :show
+    elsif @word_search.valid_url? && @word_search.weigh_url_words
       render :show
     else
       render :new

@@ -23,6 +23,11 @@ class WordSearch < ActiveRecord::Base
     heaviest_weighted_word.frequency
   end
 
+  def weigh_url_words
+    WeightedWordSearchMaker.new(words: url_words, word_search: self)
+      .make_weighted_words
+  end
+
   private
 
   def invalid_url_error
@@ -30,13 +35,16 @@ class WordSearch < ActiveRecord::Base
     false
   end
 
+  def parsable_url?
+    parsed_url = URI.parse(url)
+    parsed_url.kind_of?(URI::HTTP) || parsed_url.kind_of?(URI::HTTPS)
   end
 
   def heaviest_weighted_word
-    weighted_words.first
+    weighted_words.sorted_by_frequency.first
   end
 
-  def weighted_words
-    @weighted_words ||= WordWeigher.new(words: words).weighted_words
+  def url_words
+    UrlWords.new(url: url).all
   end
 end
