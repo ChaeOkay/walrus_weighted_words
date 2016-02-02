@@ -19,6 +19,11 @@ class Site
   end
 
   def html
-    @html ||= Nokogiri::HTML(open url)
+  begin
+    Nokogiri::HTML(open url)
+  rescue => error
+    puts error
+    NullSite.new
+  end
   end
 end

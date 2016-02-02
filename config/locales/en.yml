@@ -23,6 +23,7 @@ en:
   word_search:
     errors:
       url: is not a valid url, please use http or https
+      unparsable: Walrus cannot parse the site content or url
     new:
       url_placeholder: example - http://www.healthfinch.com
       submit_button: Search site to weigh words
