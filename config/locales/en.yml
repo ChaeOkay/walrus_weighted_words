@@ -28,7 +28,9 @@ en:
       url: is not a valid url, please use http or https
       unparsable: Walrus cannot parse the site content or url
     new:
+      title: Please enter a URL
       url_placeholder: example - http://www.healthfinch.com
       submit_button: Search site to weigh words
+    past: Past Word Searches
     show:
       site_searched: Site searched - %{site}
