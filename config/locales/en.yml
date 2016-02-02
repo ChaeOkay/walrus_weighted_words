@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  header:
+    title: Walrus Weighted Words
+  nav:
+    new_word_search: New Word Search
   word_search:
     errors:
       url: is not a valid url, please use http or https
