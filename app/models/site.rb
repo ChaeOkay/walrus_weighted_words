@@ -7,15 +7,13 @@ class Site
   end
 
   def content
-    sanitize
-    html
+    sanitize && html
   end
 
   private
 
   def sanitize
-    html.xpath('//style').remove
-    html.xpath('//script').remove
+    html.xpath('//style').remove && html.xpath('//script').remove
   end
 
   def html
