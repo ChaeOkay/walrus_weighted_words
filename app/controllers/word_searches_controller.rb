@@ -11,6 +11,7 @@ class WordSearchesController < ApplicationController
     elsif @word_search.valid_url? && @word_search.weigh_url_words
       render :show
     else
+      flash[:notice] = I18n.t('word_search.errors.unparsable')
       render :new
     end
   end

@@ -16,7 +16,7 @@ class UrlWords
   private
 
   def site
-    @site ||= Site.new(url: url)
+    Site.new(url: url)
   end
 
   def site_text
