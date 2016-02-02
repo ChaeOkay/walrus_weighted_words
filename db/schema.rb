@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129025630) do
+ActiveRecord::Schema.define(version: 20160201011316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "weighted_words", force: :cascade do |t|
+    t.integer  "word_search_id", null: false
+    t.string   "word",           null: false
+    t.integer  "frequency",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "weighted_words", ["word_search_id"], name: "index_weighted_words_on_word_search_id", using: :btree
 
   create_table "word_searches", force: :cascade do |t|
     t.string   "url",        null: false

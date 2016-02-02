@@ -1,20 +1,17 @@
 require 'spec_helper'
 
 describe WeightedWord do
-  context 'sorting a collection' do
-    let(:weighted_word_1) { described_class.new(word: 'warlock',
-                                                frequency: 5) }
-    let(:weighted_word_2) { described_class.new(word: 'gargoyle',
-                                                frequency: 10) }
-    let(:weighted_word_3) { described_class.new(word: 'polyhedral',
-                                                frequency: 20) }
-    let(:collection) { [weighted_word_2,
-                        weighted_word_3,
-                        weighted_word_1 ] }
-    subject { collection.sort }
+  let(:word_search) { create(:word_search) }
+  let!(:weighted_words) { create_list(:weighted_word, 12, word_search: word_search) }
 
-    it { is_expected.to eq [weighted_word_3,
-                            weighted_word_2,
-                            weighted_word_1] }
+  specify '.sorted_by_frequency' do
+    first_in_list = described_class.sorted_by_frequency.first
+    expect(first_in_list.frequency).to eq weighted_words.last.frequency
+  end
+
+  specify '.top_ten' do
+    tenth_sorted = described_class.sorted_by_frequency[9]
+    last_in_top_ten = described_class.top_ten.last
+    expect(last_in_top_ten).to eq tenth_sorted
   end
 end

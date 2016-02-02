@@ -1,13 +1,10 @@
-class WeightedWord
-  include Comparable
-  attr_reader :word, :frequency
+class WeightedWord < ActiveRecord::Base
+  belongs_to :word_search, inverse_of: :weighted_words
 
-  def initialize(word:, frequency:)
-    @word = word
-    @frequency = frequency
-  end
+  validates :word, presence: true
+  validates :word_search, presence: true
+  validates :frequency, presence: true
 
-  def <=>(other_word)
-    other_word.frequency <=> frequency
-  end
+  scope :sorted_by_frequency, -> { order(:frequency).reverse }
+  scope :top_ten, -> { sorted_by_frequency.first(10) }
 end

@@ -1,49 +1,27 @@
 require 'spec_helper'
 
 describe WordSearch do
-  subject { described_class.new(url: url) }
+  let(:weighted_word_params) { { word: 'fox', frequency: 1 } }
+  let(:url) { 'http://hi.com' }
+  subject(:word_search) { described_class.new(url: url) }
+  before { word_search.weighted_words.new(weighted_word_params) }
 
-  context 'with valid url' do
-    let(:url) { 'http://hi.com' }
-    it { is_expected.to be_valid }
-  end
-
-  context 'with invalid url' do
-    let(:url) { 'www.hi.com' }
+  context 'with valid url and no weighted words' do
+    let(:weighted_word_params) { nil }
     it { is_expected.not_to be_valid }
   end
 
-  context 'with weighted words' do
-    let(:word_search) { described_class.new(url: 'https://chaeokeefe.com') }
+  describe 'valid_url?' do
+    subject { word_search.valid_url? }
 
-    before do
-      allow_any_instance_of(UrlWords).to receive(:all) { ['words'] }
-      allow_any_instance_of(WordWeigher).to receive(:words)
-      allow_any_instance_of(WordWeigher).to receive(:weighted_words) { weighted_words }
+    context 'with valid url' do
+      it { is_expected.to be true }
     end
 
-    context 'with more than 10 weighted words' do
-      let(:weighted_words) { %w(a b c d e f g h i j l m) }
-      describe '#top_ten_weighted_words' do
-
-        subject { word_search.top_ten_weighted_words.size }
-        it { is_expected.to eq 10 }
-      end
-    end
-
-    context 'with more than 1 weighted word' do
-      let(:weighted_word1) { instance_double('WeightedWord', word: 'cat', frequency: 9) }
-      let(:weighted_word2) { instance_double('WeightedWord', word: 'bird', frequency: 2) }
-      let(:weighted_words) { [weighted_word1, weighted_word2] }
-
-      context '#top_weighted_word' do
-        subject { word_search.top_weighted_word }
-        it { is_expected.to eq weighted_word1.word }
-      end
-
-      context '#top_weighted_frequency' do
-        subject { word_search.top_weighted_frequency }
-        it { is_expected.to eq weighted_word1.frequency }
+    context 'with invliad url' do
+      let(:url) { 'www.hi.com' }
+      it 'is false' do
+        expect(word_search.valid_url?).to be false
       end
     end
   end
