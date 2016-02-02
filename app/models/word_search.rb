@@ -19,10 +19,6 @@ class WordSearch < ActiveRecord::Base
 
   private
 
-  def words
-   # words (hstore?) or the xml can be saved to WordSearch pg table,
-   # not sure what the best caching situation is yet
-    UrlWords.new(url: url).all
   end
 
   def heaviest_weighted_word
