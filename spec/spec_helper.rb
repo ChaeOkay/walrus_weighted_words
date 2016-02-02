@@ -4,9 +4,9 @@ require 'vcr'
 WebMock.disable_net_connect!(allow_localhost: true)
 
 VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.configure_rspec_metadata!
-  config.default_cassette_options = { record: :new_episodes }
   config.hook_into :webmock
 end
 
