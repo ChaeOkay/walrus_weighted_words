@@ -35,3 +35,22 @@ table {
 
 table th { padding: 0 2em 0 2em; }
 table td { padding: 0 2em 0 2em;}
+
+fieldset {
+  border: none;
+}
+
+input {
+  inline: true;
+  width: 50%;
+  height: 3em;
+  text-align: center;
+}
+
+button {
+  inline: true;
+  background-color: lightblue;
+  border: none;
+}
+
+fieldset.errors { color: magenta; }
