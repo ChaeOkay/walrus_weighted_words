@@ -1,15 +1,14 @@
 require 'uri'
 
-class UrlValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless valid_url?(value)
-      record.errors[attribute]
-        .push(options[:message] || I18n.t('word_search.errors.url'))
+class UrlValidator < ActiveModel::Validator
+  def validate(record)
+    unless valid_url?(record.url)
+      record.errors[:invalid_url] << I18n.t('word_search.errors.url')
     end
   end
 
   def valid_url?(url)
-    url = URI.parse(url)
-    url.kind_of?(URI::HTTP) || url.kind_of?(URI::HTTPS)
+    parsed_url = URI.parse(url)
+    parsed_url.kind_of?(URI::HTTP) || parsed_url.kind_of?(URI::HTTPS)
   end
 end

@@ -1,12 +1,18 @@
-class WordSearch < ActiveRecord::Base
-  has_many :weighted_words, inverse_of: :word_search
+require 'uri'
 
-  validates :url,
-    presence: true,
-    url: true
+class WordSearch < ActiveRecord::Base
+  has_many :weighted_words, inverse_of: :word_search, dependent: :destroy
+
+  validates :weighted_words, length: { minimum: 1 }
+  validates :url, presence: true
+
+  def valid_url?
+    valid?
+    parsable_url? ? true : invalid_url_error
+  end
 
   def top_ten_weighted_words
-    weighted_words[0..9]
+    weighted_words.top_ten
   end
 
   def top_weighted_word
@@ -18,6 +24,11 @@ class WordSearch < ActiveRecord::Base
   end
 
   private
+
+  def invalid_url_error
+    self.errors[:url] << I18n.t('word_search.errors.url')
+    false
+  end
 
   end
 
