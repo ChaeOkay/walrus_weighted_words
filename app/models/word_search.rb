@@ -6,14 +6,7 @@ class WordSearch < ActiveRecord::Base
   validates :weighted_words, length: { minimum: 1 }
   validates :url, presence: true
 
-  def valid_url?
-    valid?
-    parsable_url? ? true : invalid_url_error
-  end
-
-  def top_ten_weighted_words
-    weighted_words.top_ten
-  end
+  delegate :top_ten, to: :weighted_words
 
   def top_weighted_word
     heaviest_weighted_word.word
