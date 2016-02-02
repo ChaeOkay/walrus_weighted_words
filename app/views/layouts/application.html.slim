@@ -8,5 +8,7 @@ html lang='en'
       = favicon_link_tag
 
   body
-    = flash[:notice]
-    = yield
+    div
+      = render 'layouts/header'
+      = flash[:errors]
+      = yield
