@@ -1,0 +1,28 @@
+body {
+  text-align: center;
+  font-family: 'Josefin Slab';
+  margin: 0;
+}
+
+a { text-decoration: none; }
+a:hover { color: black; }
+a:visited { color: black; }
+
+header {
+  background-color: yellow;
+  padding: 0.5em 0 1em 0;
+}
+
+h1 {
+  font-family: 'Londrina Outline', Arial;
+  font-weight: 400;
+  font-size: 8em;
+  padding: 0 0 0 0;
+  margin: 0.5em 0 0.1em 0;
+}
+
+nav {
+  font-weight: 600;
+}
+
+
