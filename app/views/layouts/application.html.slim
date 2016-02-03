@@ -2,13 +2,13 @@ doctype html
 html lang='en'
   head
     meta charset='utf-8'
-    title WalrusWeightedWords
-      = stylesheet_link_tag 'application', media: 'all'
-      = javascript_include_tag 'application'
-      = favicon_link_tag
+    title= t('title')
+
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Londrina+Outline|Josefin+Slab:300,600', type: 'text/css'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = favicon_link_tag
 
   body
-    div
-      = render 'layouts/header'
-      = flash[:errors]
-      = yield
+    = render 'layouts/header'
+    = yield

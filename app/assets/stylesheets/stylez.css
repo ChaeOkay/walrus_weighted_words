@@ -1,0 +1,56 @@
+body {
+  text-align: center;
+  font-family: 'Josefin Slab';
+  margin: 0;
+}
+
+a { text-decoration: none; }
+a:hover { color: black; }
+a:visited { color: black; }
+
+header {
+  background-color: yellow;
+  padding: 0.5em 0 1em 0;
+}
+
+h1 {
+  font-family: 'Londrina Outline', Arial;
+  font-weight: 400;
+  font-size: 8em;
+  padding: 0 0 0 0;
+  margin: 0.5em 0 0.1em 0;
+}
+
+nav {
+  font-weight: 600;
+}
+
+table {
+  align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px dotted gray;
+  padding: 0.5em 0 1em 0;
+}
+
+table th { padding: 0 2em 0 2em; }
+table td { padding: 0 2em 0 2em;}
+
+fieldset {
+  border: none;
+}
+
+input {
+  inline: true;
+  width: 50%;
+  height: 3em;
+  text-align: center;
+}
+
+button {
+  inline: true;
+  background-color: lightblue;
+  border: none;
+}
+
+fieldset.errors { color: magenta; }

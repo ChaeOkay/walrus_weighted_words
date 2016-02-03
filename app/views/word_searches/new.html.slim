@@ -1,4 +1,9 @@
+p= t('word_search.new.title')
+
 = simple_form_for @word_search do |f|
   fieldset= f.input :url,
-    placeholder: t('word_search.new.url_placeholder')
+    placeholder: t('word_search.new.url_placeholder'),
+    label: false, error: false
+  fieldset.errors= f.error :url
+  fieldset.errors= flash.now[:notice]
   button= t('word_search.new.submit_button')

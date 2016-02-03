@@ -1,14 +1,13 @@
-p= 'Word Searches'
+p= t('word_search.past')
 
-p
-  table
+table
+  tr
+    th site
+    th word
+    th frequency
+
+  - @word_searches.each do |word_search|
     tr
-      th site
-      th word
-      th frequency
-
-    - @word_searches.each do |word_search|
-      tr
-        td= word_search.url
-        td= word_search.top_weighted_word
-        td= word_search.top_weighted_frequency
+      td= word_search.url
+      td= word_search.top_weighted_word
+      td= word_search.top_weighted_frequency
