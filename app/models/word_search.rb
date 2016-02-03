@@ -6,14 +6,15 @@ class WordSearch < ActiveRecord::Base
   validates :weighted_words, length: { minimum: 1 }
   validates :url, presence: true
 
-  delegate :top_ten, to: :weighted_words
+  delegate :heaviest,
+           :top_ten, to: :weighted_words
 
   def top_weighted_word
-    heaviest_weighted_word.word
+    heaviest.word
   end
 
   def top_weighted_frequency
-    heaviest_weighted_word.frequency
+    heaviest.frequency
   end
 
   def weigh_url_words

@@ -7,4 +7,8 @@ class WeightedWord < ActiveRecord::Base
 
   scope :sorted_by_frequency, -> { order(:frequency).reverse }
   scope :top_ten, -> { sorted_by_frequency.first(10) }
+
+  def self.heaviest
+    self.sorted_by_frequency.first
+  end
 end
