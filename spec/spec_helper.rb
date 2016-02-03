@@ -1,5 +1,7 @@
+require 'database_cleaner'
 require 'webmock/rspec'
 require 'vcr'
+require File.expand_path("../../config/environment", __FILE__)
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

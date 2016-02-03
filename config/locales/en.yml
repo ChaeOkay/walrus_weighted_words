@@ -25,7 +25,6 @@ en:
   title: Walrus Weighted Words
   word_search:
     errors:
-      url: is not a valid url, please use http or https
       unparsable: Walrus cannot parse the site content or url
     new:
       title: Please enter a URL

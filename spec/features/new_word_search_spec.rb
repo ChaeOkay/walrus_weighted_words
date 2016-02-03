@@ -18,12 +18,12 @@ describe 'new word search' do
     visit new_word_search_path
     fill_in 'word_search_url', with: 'www.hi.com'
     click_button I18n.t('word_search.new.submit_button')
-    expect(page).to have_content(I18n.t('word_search.errors.url'))
+    expect(page).to have_content(I18n.t('word_search.errors.unparsable'))
   end
 
   it 'displays a rails presence validation message when missing' do
     visit new_word_search_path
     click_button I18n.t('word_search.new.submit_button')
-    expect(page).to have_content(I18n.t('errors.messages.blank'))
+    expect(page).to have_content(I18n.t('word_search.errors.unparsable'))
   end
 end

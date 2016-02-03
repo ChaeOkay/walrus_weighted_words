@@ -1,14 +1,27 @@
 require 'spec_helper'
 
 describe UrlWords do
-  describe '#all' do
+  subject(:url_words) { described_class.new(url: url) }
+
+  describe '#words_map' do
     VCR.use_cassette 'chaeokeefe', allow_playback_repeats: true do
       let(:url) { 'http://chaeokeefe.com' }
-      let(:expected_words) { ["Chae", "O'Keefe", "chaeokeefe@gmail.com", "About", "software", "developer", "2016", "Chae", "O'Keefe", "with", "help", "from", "Jekyll", "Bootstrap", "Twitter", "Bootstrap", "and", "Github", "Pages"] }
-      subject(:url_words) { described_class.new(url: url) }
+      subject(:words_map) { url_words.words_map }
 
-      it 'returns a collection of words viewable by a user' do
-        expect(url_words.all.size).to eq expected_words.size
+      it 'returns a map of unique words' do
+        expect(words_map.size).to eq 16
+      end
+
+      it 'returns a hash' do
+        expect(words_map).to be_a Hash
+      end
+
+      it 'returns the word as the key' do
+        expect(words_map.first[0]).to be_a String
+      end
+
+      it 'returns the frequency as the value' do
+        expect(words_map.first[1]).to be_an Integer
       end
     end
   end

@@ -1,28 +1,22 @@
 require 'spec_helper'
 
 describe WordSearch do
-  let(:weighted_word_params) { { word: 'fox', frequency: 1 } }
-  let(:url) { 'http://hi.com' }
+  let(:url) { 'http://www.chaeokeefe.com' }
+  let(:weighted_word) { FactoryGirl.create(:weighted_word) }
   subject(:word_search) { described_class.new(url: url) }
-  before { word_search.weighted_words.new(weighted_word_params) }
 
-  context 'with valid url and no weighted words' do
-    let(:weighted_word_params) { nil }
-    it { is_expected.not_to be_valid }
+  before do
+    word_search.weighted_words << weighted_word
+    word_search.save
   end
 
-  describe 'valid_url?' do
-    subject { word_search.valid_url? }
+  describe '#top_weighted_word' do
+    subject { word_search.top_weighted_word }
+    it { is_expected.to eq weighted_word.word }
+  end
 
-    context 'with valid url' do
-      it { is_expected.to be true }
-    end
-
-    context 'with invliad url' do
-      let(:url) { 'www.hi.com' }
-      it 'is false' do
-        expect(word_search.valid_url?).to be false
-      end
-    end
+  describe '#top_weighted_frequency' do
+    subject { word_search.top_weighted_frequency }
+    it { is_expected.to eq weighted_word.frequency }
   end
 end
