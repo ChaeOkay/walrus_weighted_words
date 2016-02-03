@@ -9,8 +9,15 @@ class UrlWords
     @url = url
   end
 
-  def all
-    parsed_site_words
+  def words_map
+    # first value is a unique word, last value is an array of each word occurnce
+    #   => ["cat", ["cat", "cat", "cat]]
+    arrayed_words = parsed_site_words.group_by { |word| word }
+
+    arrayed_words.inject({}) do |hash, (word, word_list) |
+      hash[word] = word_list.size
+      hash
+    end
   end
 
   private
