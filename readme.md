@@ -1,4 +1,4 @@
-#[Walrus Weighted Words](http://walrusweightedwords.biz/)
+#[Walrus Weighted Words](https://walrus-weighted-words.herokuapp.com/)
 
 ![Walrus Exercising, as walrus' do](https://media4.giphy.com/media/FvfUDSqHruCDm/200.gif)
 
