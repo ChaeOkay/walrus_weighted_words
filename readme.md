@@ -13,6 +13,7 @@ To get started:
 $ Bundle install  
 $ bin/rake db:create  
 $ bin/rake db:schema:load  
+$ bin/rake db:migrate  
 $ bin/rake db:test:prepare  
 create a .env file, see the .sample.env file  
 $ rails s  
