@@ -7,7 +7,7 @@ Postgres
 
 Versions:  
 Ruby 2.3.0  
-Rails 4.2.5a  
+Rails 4.2.5  
 
 To get started:  
 $ Bundle install  
