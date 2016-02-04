@@ -1,6 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-
 class UrlWords
   attr_reader :url
   private :url

@@ -3,6 +3,8 @@ require 'webmock/rspec'
 require 'vcr'
 require File.expand_path("../../config/environment", __FILE__)
 
+ENV['RAILS_ENV'] ||= 'test'
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 VCR.configure do |config|

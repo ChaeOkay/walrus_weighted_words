@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class Site
   attr_reader :url
   private :url

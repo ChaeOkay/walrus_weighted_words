@@ -5,7 +5,7 @@ class WeightedWord < ActiveRecord::Base
   validates :word_search, presence: true
   validates :frequency, presence: true
 
-  scope :sorted_by_frequency, -> { order(:frequency).reverse }
+  scope :sorted_by_frequency, -> { order(frequency: :desc) }
   scope :top_ten, -> { sorted_by_frequency.first(10) }
 
   def self.heaviest
