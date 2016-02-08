@@ -1,3 +1,5 @@
+require 'words'
+
 class WordSearchesController < ApplicationController
 
   def new
@@ -30,12 +32,16 @@ class WordSearchesController < ApplicationController
   end
 
   def make_weighted_words(word_search)
-    WeightedWordSearchMaker.new(word_search: word_search, words_map: url_words)
+    WeightedWordSearchMaker.new(word_search: word_search, words_map: words_map)
       .make_weighted_words
   end
 
-  def url_words
-    UrlWords.new(url: word_search_params[:url]).words_map
+  def words_map
+    Words.frequency(site_text)
+  end
+
+  def site_text
+    Site.new(url: word_search_params[:url]).site_text
   end
 
   def valid_url?

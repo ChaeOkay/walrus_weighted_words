@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class Site
   attr_reader :url
   private :url
@@ -6,17 +9,18 @@ class Site
     @url = url
   end
 
-  def content
-    sanitize && html
+  def site_text
+    @site_text ||= sanitized_html.inner_text.downcase.squish
   end
 
   private
 
-  def sanitize
-    html.xpath('//style').remove && html.xpath('//script').remove
+  def sanitized_html
+    html.tap { |html| html.xpath('//style|//script').remove }
   end
 
   def html
+  @html ||=
   begin
     Nokogiri::HTML(open url)
   rescue => error

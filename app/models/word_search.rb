@@ -1,5 +1,3 @@
-require 'uri'
-
 class WordSearch < ActiveRecord::Base
   has_many :weighted_words, inverse_of: :word_search, dependent: :destroy
 
